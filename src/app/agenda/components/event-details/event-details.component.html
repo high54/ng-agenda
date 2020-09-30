@@ -1,0 +1,10 @@
+<main id="event-details">
+  <h3>{{ data.title }}</h3>
+  {{ getEventDate() }}
+  <p>
+    {{ data?.description }}
+  </p>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Fermer</button>
+  </div>
+</main>

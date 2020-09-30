@@ -1,0 +1,19 @@
+<main id="events-details">
+    <section id="display-day">
+        <span id="day-name">
+            {{ getDayName() }}
+        </span>
+        <span id="day-date" (click)="displaySelectedDay()">
+            {{ data.day }}
+        </span>
+    </section>
+
+    <br>
+    <span *ngFor="let event of data.events" (click)="showEvent(event)" [ngStyle]="{'background-color': event.color }">
+        {{ event.title }}
+    </span>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Fermer</button>
+    </div>
+</main>

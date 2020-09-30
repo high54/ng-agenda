@@ -1,0 +1,45 @@
+@import 'colors.scss';
+
+// Hide Labels
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+  // Align Icons
+  .material-icons {
+    display: inline-flex;
+    align-items:center; 
+    font-size: 1rem;
+}
+.mat-form-field-infix {
+  width: auto !important;
+}
+
+.danger {
+  color: $danger;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.keyboard-nav-modalbox {
+  mat-dialog-container {
+    background-color: $primary;
+    border-radius: 0.5rem;
+  }
+}
+
+.snackBar-danger {
+  background: $danger;
+}
+.snackBar-success {
+  background: $green;
+}

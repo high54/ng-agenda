@@ -1,0 +1,19 @@
+<section id="agenda-calendar">
+    <section id="navigation">
+        <button mat-stroked-button (click)="today()" class="nav-today" title="{{currentDateToString}}">Aujourd'hui</button>
+        <button  mat-raised-button (click)="previous()" class="nav-calendar">
+            &lsaquo;</button> <button mat-raised-button (click)="next()" class="nav-calendar">&rsaquo;
+        </button>
+        <h2>{{displayDate()}}</h2>
+        <article id="display-selection">
+            <select name="display-select" (change)="selectOption($event)" [(ngModel)]="selectedOption">
+                <option [value]="opt.value" *ngFor="let opt of selectOptions">{{opt.title}}</option>
+            </select>
+        </article>
+    </section>
+
+    <main id="agenda-display">
+        <router-outlet></router-outlet>
+    </main>
+
+</section>

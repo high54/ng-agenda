@@ -1,0 +1,38 @@
+$primary: #401669; 
+$secondary: #39c9c9;
+$danger: #e73c3c;
+$warning: #e63922;
+$dark-primary: #463840;
+$white: white;
+$black: black;
+$grey: grey;
+$lightgray: rgba(230, 230, 230, 0.411);
+$whitegrey: rgba(243, 243, 243, 0.356);
+
+$font-color-lightgray: lightgray;
+
+$blue-gray: #34495e;
+$blue-gray-darken: #2c3e50;
+$blue: #002c4d;
+$blue-darken: #2980b9;
+$green: #1abc9c;
+$green-darken: #16a085;
+// Icons colors
+.icon-primary {
+    color: $secondary;
+}
+.icon-alerte {
+    color: $danger;
+    font-size: 1.2rem;
+}
+.icon-secondary {
+    color: $white;
+}
+.icon-warning {
+    color: $white;
+    background-color: $warning;
+    border-radius: 50%;
+}
+.icon-danger {
+    color: $danger;
+}

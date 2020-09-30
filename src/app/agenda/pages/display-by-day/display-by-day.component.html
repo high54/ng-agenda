@@ -1,0 +1,43 @@
+<section id="events-time-zero">
+    <!-- START DISPLAY DAY INFORMATIONS -->
+    <article>
+        {{ selectedDate.nameOfDay}}
+        {{ selectedDate.day}}
+    </article>
+    <!-- END DISPLAY DAY INFORMATIONS -->
+
+    <!-- START DISPLAY EVENTS WITHOUT TIME -->
+    <section>
+        <div *ngFor="let event of events; let i = index">
+            <article *ngIf="noMoreTwo(i)" (click)="showEvent(event)" class="event-notset"
+                [ngStyle]="{'background-color': event.color }">
+                {{ event.title }}
+            </article>
+        </div>
+        <span class="more-events" *ngIf="events.length > 2" (click)="showAllEvent()">
+            {{ events.length - 2}} {{ events.length - 2 > 1 ? "autres" : "autre" }}
+        </span>
+    </section>
+    <!-- END DISPLAY EVENTS WITHOUT TIME -->
+</section>
+
+<section id="display-by-day">
+
+    <!-- START DISPLAY HOURS ON LEFT  -->
+    <section id="hour-number">
+        <article *ngFor="let hour of listOfHours">
+            <span>
+                {{ hour }}
+            </span>
+        </article>
+    </section>
+    <!-- END DISPLAY HORUS ON LEFT -->
+
+    <section id="separator">
+        <article *ngFor="let hour of listOfHours"></article>
+    </section>
+    <section id="display-hours">
+        <article *ngFor="let hour of listOfHours" (click)="addEvent()">
+        </article>
+    </section>
+</section>

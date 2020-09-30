@@ -1,0 +1,25 @@
+<main id="display-by-year">
+    <section class="week" *ngFor="let month of fullYear; let i = index">
+        <h4 class="name-month">
+            {{ getNameOfMonth(i)}}
+        </h4>
+        <section class="week-numbers">
+            <article *ngFor="let wknb of getWeeksNumbers(i)" title="Semaine {{ wknb }}">
+                {{ wknb }}
+            </article>
+        </section>
+        <section class="name-of-days">
+            <article class="name-of-day" *ngFor="let name of firstLetterInNameOfDaysShort">
+                {{ name }}
+            </article>
+        </section>
+        <section class="display-week">
+            <article *ngFor="let day of month" (click)="showEvents(day)">
+               <span class="day" [ngClass]="{'today': isToday(day) && thisMonth(i)}">
+                {{ day.day }}
+               </span> 
+            </article>
+        </section>
+    </section>
+
+</main>

@@ -1,0 +1,32 @@
+@import 'src/theme/colors.scss';
+
+#events-details {
+    
+    #display-day {
+        display: block;
+        width: 100%;
+        text-align: center;
+        #day-name {
+            font-size: 0.7rem;
+        }
+        #day-date {
+            cursor: pointer;
+        }
+        span {
+            color: $grey;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+    }
+    span {
+        display: block;
+        font-size: 0.75rem;
+        color: $white;
+        padding: 0.12rem;
+        text-align: left;
+        margin: 0.3rem 0;
+        border-radius: 0.4rem;
+        cursor: pointer;
+    }
+}

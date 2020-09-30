@@ -1,0 +1,154 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~highlight.js/styles/arta.css';
+@import "src/theme/colors.scss";
+@import "src/theme/utils.scss";
+@import "input.scss";
+
+*, html, body {
+    font-family: 'Baloo Tamma 2', cursive;
+}
+html, body {
+    margin:0;
+    padding:0;
+    font-size: 16px;
+    color: #545e6f;
+}
+// H1, ..., H6
+h2 {
+    margin: 1rem 0;
+    color: $dark-primary;
+}
+// HR
+hr {
+    border: none;
+    border-top: 0.0625rem solid $primary;
+}
+// TABLE
+caption {
+    margin: 1rem 0 1rem 0;
+    color: $primary;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+tbody tr:hover {
+    background-color: rgba($secondary, 0.2);
+}
+
+th {
+    font-weight: 400;
+    color: $font-color-lightgray;
+    text-align: left;
+    font-size: 0.75rem;
+
+}
+
+th, td {
+    border-bottom: 0.0625rem solid $font-color-lightgray;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+}
+form {
+    margin-top: 1rem;
+}
+.actions {
+    display: block;
+    clear: both;
+}
+
+code {
+    background-color: rgb(216, 211, 211);
+    padding: 0 0.3rem;
+    font-style: italic;
+    border-radius: 0.3rem;
+    color: $primary;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+pre {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    padding:1rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    width: 100%;
+    overflow-x: scroll;
+    code {
+        background-color:black;
+        padding: 0;
+        font-style: normal;
+        border-radius: 0;
+        color: white;
+        box-shadow: none;
+    }
+}
+
+.language-TypeScript {
+    background-color: black;
+    color: #aaa;
+}
+.hljs-comment {
+    color: rgb(11, 184, 11);
+}
+.hljs-meta {
+    color: rgb(208, 214, 114);
+}
+
+.hljs-keyword {
+    color: rgb(127, 171, 236);
+    font-weight: 400;
+}
+
+.hljs-string {
+    color: rgb(192, 103, 71);
+}
+.hljs-literal {
+    color: rgb(127, 171, 236);
+    font-weight: 400;
+}
+.hljs-built_in {
+    color: rgb(208, 214, 114);
+}
+.cms-article {
+    width: 50%;
+        margin: 0 24%;
+    img {
+        width: 100%;
+    }
+    ul:first-of-type {
+        list-style: none;
+        background: #f9f9f9 none repeat scroll 0 0;
+        border: 1px solid #aaa;
+        display: table;
+        font-size: 95%;
+        margin-bottom: 1em;
+        width: 100%;
+        padding: 20px;
+        li {
+            counter-increment: my-awesome-counter;
+            margin: 0.25rem;
+            &::before {
+                content: counter(my-awesome-counter);
+                background: $primary;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                display: inline-block;
+                line-height: 2rem;
+                color: white;
+                text-align: center;
+                margin-right: 0.5rem;
+              }
+          }
+          & ul {
+            background: #f9f9f9 none repeat scroll 0 0;
+            border: none;
+            padding: 0.5rem 0.25rem;
+              li::before {
+            background: rgba($primary, 0.8);
+          }
+        }
+      }
+      
+}

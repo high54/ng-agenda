@@ -1,0 +1,140 @@
+@import 'src/theme/colors.scss';
+#nameOfDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.7rem;
+    border: 0.625rem solid transparent;
+    margin-left: 1.5rem;
+}
+#display-by-month {
+        display: grid;
+        grid-template-columns: 1.5rem calc(100% - 1.5rem);
+
+    #week-number {
+        display: grid;
+        height: 79vh;
+        grid-template-columns: 1.5rem;
+        grid-template-rows: repeat(6, 1fr);
+        border-top: 0.0625rem solid $lightgray;
+        border-bottom: 0.125rem solid $lightgray;
+        article {
+            background-color: $lightgray;
+            display: flex;
+            align-items: center;
+            border-top: 0.0625rem solid $primary;
+            span {
+                margin: auto;
+                font-size: 0.8rem;
+            }
+        }
+        article:first-child { border-top: none; }
+    }
+    #display-days {
+        display: grid;
+        height: 79vh;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, calc(100% / 6));
+        border-top: 0.0625rem solid $primary;
+        border-right: 0.0625rem solid $primary;
+        .week-end {
+            background-color: rgba($secondary, 0.2);
+        }
+        .not-this-month {
+            background-color: rgba($primary, 0.2);
+        }
+        article {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            border-bottom: 0.0625rem solid $primary;
+            border-left: 0.0625rem solid $primary;
+            &:hover > .day {
+                background-color: $secondary;
+                border-radius: 50%;
+                color: white;
+                cursor: pointer;
+            }
+            div {
+                margin-top: 0.25rem;
+            }
+            span {
+                display: block;
+            }
+            .events-container {
+                position: absolute;
+                width: 100%;
+                cursor: pointer;
+                z-index: 100;
+                -webkit-box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.2);
+                background-color:rgba($secondary,0.4);
+            }
+            .start {
+                border-top-left-radius: 0.25rem;
+                border-bottom-left-radius: 0.25rem;
+            }
+            .container-row-0 {
+                top: 1.6rem;
+            }
+            .container-row-1 {
+                top: 2.6rem;
+            }
+            .container-row-2 {
+                top: 3.6rem;
+            }
+            .container-row-3 {
+                top: 4.6rem;
+            }
+            .container-row-4 {
+                top: 5.6rem;
+            }
+            .start-event {
+                font-size: 0.75rem;
+                color: $white;
+                margin-left: 1rem;
+                text-align: left;
+            }
+            .event {
+                font-size: 0.75rem;
+                color: $white;
+            }
+            .end-event {
+                font-size: 0.75rem;
+                color: $white;
+                margin-right: 1rem;
+            }
+            .day {
+                height: 1.5rem;
+                line-height: 1.5rem;
+                font-size: 0.75rem;
+                display: inline-block;
+                white-space: nowrap;
+                min-width: 1.5rem;
+                width: max-content;
+            }
+            .today {
+                background-color: $primary;
+                border-radius: 50%;
+                color: white;
+            }
+            .more-events {
+                position: absolute;
+                bottom: 0.25rem;
+                font-size: 0.9rem;
+                font-weight: 500;
+                right: 0.25rem;
+                left: 0;
+                text-align: left;
+                padding-left: 0.25rem;
+
+                &:hover {
+                    background-color: $lightgray;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

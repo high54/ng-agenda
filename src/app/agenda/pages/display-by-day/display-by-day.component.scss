@@ -1,0 +1,63 @@
+@import 'src/theme/colors.scss';
+#events-time-zero {
+    .event-notset {
+        border-radius: 1rem;
+        padding-left: 0.5rem;
+        cursor: pointer;
+        color: $white;
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    .more-events {
+        width: 100%;
+        display: block;
+        cursor: pointer;
+        &:hover {
+            background-color: $lightgray;
+        }
+    }
+}
+#display-by-day{
+    height: 80vh;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 2.2rem 0.5rem calc(100% - 4rem);
+    #hour-number {
+        display: grid;
+        grid-template-columns: 2rem;
+        grid-template-rows: repeat(24, 3rem);
+        article {
+            display: flex;
+            position: relative;
+            align-items: center;
+            span {
+                margin: auto;
+                position: absolute;
+                bottom: -8px;
+                font-size: 0.8rem;
+                z-index: 2;
+            }
+        }
+        article:first-child { border-top: none; }
+    }
+    #separator {
+        display: grid;
+        grid-template-columns: 0.5rem;
+        grid-template-rows: repeat(24, 3rem); 
+        border-right: 0.0625rem solid $secondary;
+        article {
+            border-bottom: 0.0625rem solid $secondary;
+        }
+        article:last-child { border-bottom: none; }
+    }
+    #display-hours {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(24, 3rem); 
+
+        article {
+            border-bottom: 0.0625rem solid $secondary;
+        }
+        article:last-child { border-bottom: none; }
+    }
+}

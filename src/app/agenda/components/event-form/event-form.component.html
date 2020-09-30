@@ -1,0 +1,70 @@
+<main id="event-form">
+  <form [formGroup]="eventForm">
+    <mat-form-field class="full-width">
+      <mat-label>Titre de l'événement</mat-label>
+      <input matInput ptype="text" name="title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="description" id="description" cols="30" rows="10"
+        formControlName="description"></textarea>
+    </mat-form-field>
+
+    <section id="dates">
+      <mat-form-field>
+        <input matInput [matDatepicker]="startDate" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+      </mat-form-field>
+      <article class="separator">
+        <span>-</span>
+      </article>
+      <mat-form-field>
+        <input matInput [matDatepicker]="endDate" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+      </mat-form-field>
+    </section>
+
+    <button mat-stroked-button color="primary" *ngIf="!isAddTime" (click)="addTime()">Préciser l'heure</button>
+    <ng-container *ngIf="isAddTime">
+
+
+      <section id="add-time">
+
+        <mat-form-field class="example-full-width">
+          <!-- Exemple sur 24h -->
+          <input type="text" agendaInputTime placeholder="Heure de début" aria-label="Heure de début" matInput
+            formControlName="timeStart" [matAutocomplete]="auto">
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+          <!-- Exemple sur 12h -->
+          <input type="text" agendaInputTime [isEn]="true" placeholder="Heure de fin" aria-label="Heure de fin" matInput
+            formControlName="timeEnd" [matAutocomplete]="auto">
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+
+        </mat-form-field>
+
+      </section>
+
+    </ng-container>
+    <section id="actions">
+      <button mat-raised-button class="btn-update" (click)="save()">Enregistrer</button>
+      <button mat-raised-button class="btn-danger" (click)="cancel()">Annuler</button>
+    </section>
+  </form>
+</main>

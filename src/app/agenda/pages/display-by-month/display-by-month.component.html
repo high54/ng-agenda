@@ -1,0 +1,41 @@
+<section id="nameOfDays">
+    <article *ngFor="let nameOfDay of nameOfDaysShort()">
+        {{ nameOfDay }}
+    </article>
+</section>
+<main id="display-by-month">
+    <section id="week-number">
+        <article *ngFor="let weekNumber of weekNumbers" title="Semaine {{weekNumber}}">
+            <span>
+                {{ weekNumber }}
+            </span>
+        </article>
+    </section>
+    <section id="display-days">
+        <article *ngFor="let day of days; let i = index"
+            [ngClass]="{'not-this-month':notThisMonth(day), 'week-end': isWeekend(i) }" (mousedown)="mouseDown($event,day)"
+            (mousemove)="mouseMove($event,day)" (mouseup)="mouseUp($event, day)">
+            
+            <div class="day" [ngClass]="{'today': isToday(day)}" >
+                {{ day.day }}
+            </div>
+            <div (click)="showEvent(eventCal)" class="events-container"
+                 [ngClass]="{'container-row-0': eventCal?.displayRow === 0 || !eventCal.displayRow,
+             'container-row-1': eventCal?.displayRow === 1
+             ,'container-row-2': eventCal?.displayRow === 2
+             ,'container-row-3': eventCal?.displayRow === 3
+             ,'container-row-4': eventCal?.displayRow === 4,
+             'start': eventCal.isStartDate ||i % 7===0}" *ngFor="let eventCal of day.events; let ib = index">
+                <span class="start-event"
+                    *ngIf="eventCal.isStartDate && noMoreTwo(ib) ||i % 7===0 && noMoreTwo(ib)">{{ getTime(eventCal) }}
+                    {{ eventCal.title }} &nbsp;</span>
+                <span class="end-event" *ngIf="eventCal.isEndDate && i % 7!==0 && noMoreTwo(ib) && !eventCal.isStartDate">&nbsp;</span>
+                <span class="event"
+                    *ngIf="!eventCal.isStartDate && !eventCal.isEndDate && i % 7!==0 && noMoreTwo(ib)">&nbsp;</span>
+            </div>
+            <span class="more-events" *ngIf="day.events.length > 2" (click)="showAllEvent(day)">
+                {{ day?.events.length - 2}} {{ day?.events.length - 2 > 1 ? "autres" : "autre" }}
+            </span>
+        </article>
+    </section>
+</main>

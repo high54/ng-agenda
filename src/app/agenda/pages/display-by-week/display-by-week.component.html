@@ -1,0 +1,34 @@
+<section id="display-by-week">
+    <section id="dates">
+        <article class="date" *ngFor="let weekDay of currentWeek">
+            <div>
+                <span>
+                    {{ nameOfDaysShortByIndex(weekDay.dayIndex) }}
+                </span>
+            </div>
+            <div class="week-day">
+                <span [ngClass]="{'current': isToday(weekDay.date)}">
+                    {{ weekDay.date.getDate() }}
+                </span>
+                <article class="event" (click)="showEvent(event)" *ngFor="let event of weekDay.agendaDate.events"
+                    [ngStyle]="{'background-color': event.color }">
+                    {{ event.title }}
+                </article>
+
+            </div>
+
+        </article>
+    </section>
+    <section id="hours">
+        <article class="hour" *ngFor="let hour of hours">
+            <span>
+                {{hour}}
+            </span>
+        </article>
+    </section>
+    <section id="weeks">
+        <article class="week" *ngFor="let week of weeks">
+            <article class="week-hour" *ngFor="let hour of hours" (click)="addEvent(week,hour)"></article>
+        </article>
+    </section>
+</section>
