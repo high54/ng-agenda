@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class DisplayService {
-    // Klingon US week, start by sunday.
+
     private nameOfDays = [
         'Dimanche', 'Lundi',
         'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'
     ];
+
     constructor() { }
 
     public nameOfMonth(month: number): string {
@@ -28,7 +29,11 @@ export class DisplayService {
         ];
         return monthsName[month];
     }
-
+    /**
+     * Retourne les noms des jours en version courte
+     * Et place Lundi en premier jour de la semaine
+     * Ainsi que Dimanche en dernier jour de la semaine
+     */
     public nameOfDaysShort(): string[] {
         const nameOfDaysShort = this.shortTheNameOfDays();
         const sunday = nameOfDaysShort[0];
@@ -43,20 +48,14 @@ export class DisplayService {
         const nameOfDaysShort = this.shortTheNameOfDays();
         return nameOfDaysShort[index];
     }
-
     public listOfHours(): string[] {
         const hours = [];
         for (let i = 1; i <= 23; i++) {
-            if (i < 10) {
-                hours.push(`0${i}:00`);
-            } else {
-                hours.push(`${i}:00`);
-            }
+            hours.push(i < 10 ? `0${i}:00` : `${i}:00`);
         }
         hours.push('');
         return hours;
     }
-
     public firstLetterInNameOfDaysShort(): string[] {
         const nameOfDaysShort = this.nameOfDays.slice().map((name) => {
             return name.substr(0, 1).toUpperCase();
@@ -66,12 +65,10 @@ export class DisplayService {
         nameOfDaysShort.push(sunday);
         return nameOfDaysShort;
     }
-
     public getCurrentDate(): string {
         const currentDate = new Date();
         return `${this.nameOfDayByIndex(currentDate.getDay())}, ${currentDate.getDate()} ${this.nameOfMonth(currentDate.getMonth())} ${currentDate.getFullYear()}`;
     }
-
     private shortTheNameOfDays(): string[] {
         return this.nameOfDays.slice().map((name) => {
             return name.substr(0, 3).toUpperCase() + '.';
