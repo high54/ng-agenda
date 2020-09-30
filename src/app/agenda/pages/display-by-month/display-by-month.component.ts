@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 // Services
 import { CalendarService, DisplayService, DateHelpersService, EventsService } from '../../services';
-// Models
+// Models - Interfaces
 import { IAgendaDate } from '../../models/agenda-date.interface';
 import { IAgendaEvent } from '../../models/agenda-event.interface';
 // Angular Material
@@ -10,9 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgendaEventDetailsComponent, AgendaEventsDetailsComponent, AgendaEventFormComponent } from '../../components';
 
 @Component({
-    selector: 'agenda-calendar-display-by-month',
+    selector: 'app-agenda-calendar-display-by-month',
     styleUrls: ['display-by-month.component.scss'],
-    templateUrl: 'display-by-month.component.html',
+    templateUrl: 'display-by-month.component.html'
 })
 export class AgendaCalendarDisplayByMonthComponent {
     private drag = false;

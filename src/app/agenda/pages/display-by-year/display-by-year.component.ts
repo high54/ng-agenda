@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AgendaEventsDetailsComponent } from '../../components';
 
 @Component({
-    selector: 'agenda-calendar-display-by-year',
+    selector: 'app-agenda-calendar-display-by-year',
     styleUrls: ['display-by-year.component.scss'],
     templateUrl: 'display-by-year.component.html',
 })

@@ -5,11 +5,12 @@ import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 // Models
 import { IAgendaEvent } from '../models/agenda-event.interface';
-import { IAgendaDate } from '../models/agenda-date.interface';
 // Services
 import { DateHelpersService } from './date-helpers.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class EventsService {
     public eventsTemp = [];
     private apiUrl = 'http://localhost:3000/';
@@ -38,7 +39,7 @@ export class EventsService {
     }
 
 
-    public createEvent() {
+    public createEvent(): void {
         this.httpClient.post<IAgendaEvent>(`${this.apiUrl}${this.eventEp}`, this.eventsTemp[3]).pipe(
             map((resp) => {
                 return resp;
@@ -57,7 +58,7 @@ export class EventsService {
         this.eventsTemp.push(event);
         return event;
     }
-    public updateEvent(event: IAgendaEvent) {
+    public updateEvent(event: IAgendaEvent): void {
         for (let evt of this.eventsTemp) {
             if (evt.id && evt.id === event.id) {
                 evt = event;
@@ -65,8 +66,6 @@ export class EventsService {
             }
         }
         this.sortEvents();
-        console.log('State', this.eventsTemp)
-
     }
     public removeEvent(event: IAgendaEvent): void {
         for (let i = 0; i < this.eventsTemp.length; i++) {
@@ -118,8 +117,6 @@ export class EventsService {
     /**
      * TODO
      * À Optimiser !!
-     * 
-     * Si les dates ce superpose
      */
     private sortEvents(): void {
         if (this.eventsTemp.length === 1) {
@@ -189,27 +186,6 @@ export class EventsService {
                         }
                     }
                 }
-
-                // if (aNbDays > bNbDays) {
-                //     console.log('a sup')
-                //     if (b.displayRow > a.displayRow) {
-                //         console.log('b sup')
-                //         const rowB = b.displayRow;
-                //         b.displayRow = a.displayRow;
-                //         a.displayRow = rowB;
-                //     } else {
-                //         console.log('a sup b')
-                //         const rowA = a.displayRow;
-                //         a.displayRow = b.displayRow;
-                //         b.displayRow = rowA;
-                //     }
-                // } else {
-                //     console.log('bah si')
-                //     if (a.displayRow === 0) {
-                //         b.displayRow = 0;
-                //         a.displayRow += 1;
-                //     }
-                // }
                 return bNbDays - aNbDays;
             });
         }

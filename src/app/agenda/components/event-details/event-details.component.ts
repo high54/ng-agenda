@@ -4,10 +4,10 @@ import { IAgendaEvent } from '../../models/agenda-event.interface';
 // Angular Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // Services
-import { CalendarService, DisplayService } from '../../services';
+import { DisplayService } from '../../services';
 
 @Component({
-    selector: 'agenda-event-details',
+    selector: 'app-agenda-event-details',
     styleUrls: ['event-details.component.scss'],
     templateUrl: 'event-details.component.html',
 })
@@ -15,7 +15,6 @@ export class AgendaEventDetailsComponent {
     constructor(
         public dialogRef: MatDialogRef<AgendaEventDetailsComponent>,
         @Inject(MAT_DIALOG_DATA) public data: IAgendaEvent,
-        private calendarService: CalendarService,
         private displayService: DisplayService
     ) { }
 

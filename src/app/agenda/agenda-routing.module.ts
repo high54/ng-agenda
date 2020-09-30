@@ -39,7 +39,7 @@ const routes: Routes = [
             {
                 path: 'planning',
                 pathMatch: 'full',
-                component: fromPages.AgendaCalendarPlanningDisplay
+                component: fromPages.AgendaCalendarPlanningDisplayComponent
             }
         ]
     }

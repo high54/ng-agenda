@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 // Models
 import { IAgendaDate } from '../models/agenda-date.interface';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class DateHelpersService {
     constructor() { }
     public nbDayOfMonth(date: Date): number {

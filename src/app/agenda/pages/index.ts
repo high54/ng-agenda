@@ -3,7 +3,7 @@ import { AgendaCalendarDisplayByMonthComponent } from './display-by-month/displa
 import { AgendaCalendarDisplayByDayComponent } from './display-by-day/display-by-day.component';
 import { AgendaCalendarDisplayByYearComponent } from './display-by-year/display-by-year.component';
 import { AgendaCalendarDisplayByWeekComponent } from './display-by-week/display-by-week.component';
-import { AgendaCalendarPlanningDisplay } from './planning-display/planning-display.component';
+import { AgendaCalendarPlanningDisplayComponent } from './planning-display/planning-display.component';
 
 export const pages: any[] = [
     AgendaCalendarComponent,
@@ -11,7 +11,7 @@ export const pages: any[] = [
     AgendaCalendarDisplayByDayComponent,
     AgendaCalendarDisplayByYearComponent,
     AgendaCalendarDisplayByWeekComponent,
-    AgendaCalendarPlanningDisplay
+    AgendaCalendarPlanningDisplayComponent
 ];
 
 export * from './calendar/calendar.component';

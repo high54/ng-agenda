@@ -9,7 +9,7 @@ import { IAgendaDate } from '../../models/agenda-date.interface';
 // Components
 import { AgendaEventDetailsComponent, AgendaEventFormComponent } from '../../components';
 @Component({
-    selector: 'agenda-calendar-display-by-week',
+    selector: 'app-agenda-calendar-display-by-week',
     styleUrls: ['display-by-week.component.scss'],
     templateUrl: 'display-by-week.component.html',
 })
@@ -50,7 +50,6 @@ export class AgendaCalendarDisplayByWeekComponent implements OnInit {
         return this.dateHelper.isToday(agendaDate);
     }
     public addEvent(week, hour): void {
-        console.log(this.currentWeek[week].date)
         let newEvent: IAgendaEvent = {
             startDate: new Date(this.currentWeek[week].date)
         };
@@ -70,7 +69,11 @@ export class AgendaCalendarDisplayByWeekComponent implements OnInit {
             }
         });
     }
-    get currentWeek() {
+    get currentWeek(): {
+        dayIndex: number;
+        date: Date;
+        agendaDate: IAgendaDate;
+    }[] {
         return this.calendarService.generateWeekCalendar();
     }
 

@@ -13,7 +13,7 @@ import { Router, Event, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'agenda-calendar',
+    selector: 'app-agenda-calendar',
     styleUrls: ['calendar.component.scss'],
     templateUrl: 'calendar.component.html',
 })

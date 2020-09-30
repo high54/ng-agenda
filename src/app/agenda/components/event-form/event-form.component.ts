@@ -5,7 +5,7 @@ import { IAgendaEvent } from '../../models/agenda-event.interface';
 // Angular Material
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
-    selector: 'agenda-event-form',
+    selector: 'app-agenda-event-form',
     styleUrls: ['event-form.component.scss'],
     templateUrl: 'event-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -17,7 +17,7 @@ export class AgendaEventFormComponent implements OnInit {
         startDate: [new Date(), Validators.required],
         endDate: [new Date(), Validators.required]
     });
-    public isAddTime: boolean = false;
+    public isAddTime = false;
     public options;
     constructor(
         public dialogRef: MatDialogRef<AgendaEventFormComponent>,
@@ -40,7 +40,6 @@ export class AgendaEventFormComponent implements OnInit {
     public save(): void {
         const { value, valid } = this.eventForm;
         if (valid) {
-            console.log(value.title)
             this.agendaEvent.title = value.title ? value.title : 'Sans titre';
             this.agendaEvent.description = value.description;
             this.agendaEvent.startDate = value.startDate;

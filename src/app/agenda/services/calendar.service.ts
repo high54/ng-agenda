@@ -17,8 +17,8 @@ export class CalendarService {
     public events: IAgendaEvent[];
     public weekNumbers = [];
     public weeksNumbers: number[][];
-    private dayUnit: number = 1;
-    private nbDaysByWeek: number = 7;
+    private dayUnit = 1;
+    private nbDaysByWeek = 7;
     constructor(
         private eventsService: EventsService,
         private helpers: DateHelpersService
@@ -175,7 +175,7 @@ export class CalendarService {
                 year: date.getFullYear(),
                 events: this.eventsService.getEvent(date)
             };
-            week.push({ dayIndex: date.getDay(), date: date, agendaDate });
+            week.push({ dayIndex: date.getDay(), date, agendaDate });
             for (let i = 1; i <= 6; i++) {
                 const dateTemp = new Date(date.getFullYear(), date.getMonth(), date.getDate() - i);
                 agendaDate = {
@@ -212,7 +212,7 @@ export class CalendarService {
                 year: date.getFullYear(),
                 events: this.eventsService.getEvent(date)
             };
-            week.push({ dayIndex: date.getDay(), date: date, agendaDate });
+            week.push({ dayIndex: date.getDay(), date, agendaDate });
             let index = 1;
             for (let i = (restOfDay + 1); i < 7; i++) {
                 const dateTemp = new Date(date.getFullYear(), date.getMonth(), date.getDate() - index);

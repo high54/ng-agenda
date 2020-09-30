@@ -5,10 +5,10 @@ import { Component } from '@angular/core';
  * Ex : Mars 2020 to Mars 2021.
  */
 @Component({
-    selector: 'agenda-calendar-planning-display',
+    selector: 'app-agenda-calendar-planning-display',
     styleUrls: ['planning-display.component.scss'],
-    templateUrl: 'planning-display.component.html',
+    templateUrl: 'planning-display.component.html'
 })
-export class AgendaCalendarPlanningDisplay {
+export class AgendaCalendarPlanningDisplayComponent {
     constructor() { }
 }

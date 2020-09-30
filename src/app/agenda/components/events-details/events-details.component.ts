@@ -11,7 +11,7 @@ import { IAgendaEvent } from '../../models/agenda-event.interface';
 import { AgendaEventDetailsComponent } from '../event-details/event-details.component';
 
 @Component({
-    selector: 'agenda-events-details',
+    selector: 'app-agenda-events-details',
     styleUrls: ['events-details.component.scss'],
     templateUrl: 'events-details.component.html'
 })
@@ -29,7 +29,7 @@ export class AgendaEventsDetailsComponent {
         this.dialogRef.close();
     }
     public displaySelectedDay(): void {
-        this.router.navigateByUrl('')
+        this.router.navigateByUrl('');
     }
 
     public getDayName(): string {
