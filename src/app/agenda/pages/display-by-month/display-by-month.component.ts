@@ -15,6 +15,7 @@ import { AgendaEventDetailsComponent, AgendaEventsDetailsComponent, AgendaEventF
     templateUrl: 'display-by-month.component.html'
 })
 export class AgendaCalendarDisplayByMonthComponent {
+  public maxEventsPerDay = 4;
     private drag = false;
     private newEvent: IAgendaEvent;
     constructor(
@@ -44,6 +45,7 @@ export class AgendaCalendarDisplayByMonthComponent {
             this.newEvent.endDate = new Date(day.year, day.month, day.day);
             this.eventService.updateEvent(this.newEvent);
             this.calendarService.generateCalendar();
+            this.eventService.sortEvents();
         }
     }
     public mouseUp(e: Event, day: IAgendaDate): void {
@@ -98,7 +100,7 @@ export class AgendaCalendarDisplayByMonthComponent {
         return this.helpers.isToday(calendarDay);
     }
     public noMoreTwo(nbEvents: number): boolean {
-        if (nbEvents > 1) {
+        if (nbEvents >= this.maxEventsPerDay) {
             return false;
         }
         return true;

@@ -10,10 +10,10 @@
 #display-by-month {
         display: grid;
         grid-template-columns: 1.5rem calc(100% - 1.5rem);
-
+        height: 85vh;
     #week-number {
         display: grid;
-        height: 79vh;
+        height: 85vh;
         grid-template-columns: 1.5rem;
         grid-template-rows: repeat(6, 1fr);
         border-top: 0.0625rem solid $lightgray;
@@ -32,7 +32,7 @@
     }
     #display-days {
         display: grid;
-        height: 79vh;
+        height: 85vh;
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(6, calc(100% / 6));
         border-top: 0.0625rem solid $primary;
