@@ -24,13 +24,16 @@ export class EventsService {
 
   public generateFakeEvents(): IAgendaEvent[] {
     const events: IAgendaEvent[] = [];
+    const startDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    const endDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 2);
     const ev1: IAgendaEvent = {
       title: 'Event 1',
-      startDate: new Date(),
-      endDate: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 2),
+      startDate: startDate,
+      endDate: endDate,
       color: '#f8c291',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      displayRow: 1
+      displayRow: 1,
+      nbDays: this.helpers.nbDaysEvent(startDate, endDate)
     };
     events.push(ev1);
 
@@ -54,7 +57,8 @@ export class EventsService {
       description: '',
       title: '',
       startDate: new Date(newEvent.startDate),
-      endDate: newEvent.endDate ? new Date(newEvent.endDate) : new Date(newEvent.startDate)
+      endDate: newEvent.endDate ? new Date(newEvent.endDate) : new Date(newEvent.startDate),
+      displayRow: 0
     };
     this.eventsTemp.push(event);
     return event;
@@ -63,6 +67,7 @@ export class EventsService {
     for (let evt of this.eventsTemp) {
       if (evt.id && evt.id === event.id) {
         evt = event;
+        evt.nbDays = this.helpers.nbDaysEvent(evt.startDate, evt.endDate);
         break;
       }
     }
@@ -115,50 +120,39 @@ export class EventsService {
     });
     return events;
   }
-  /**
-   * TODO
-   * À Optimiser !!
-   */
   public sortEvents(): void {
     if (this.eventsTemp.length === 1) {
       this.eventsTemp[0].displayRow = 0;
     } else {
-      this.eventsTemp.sort((a: IAgendaEvent, b: IAgendaEvent) => {
-        const aStartDate = new Date(a.startDate);
-        const aEndDate = new Date(a.endDate);
-        const aNbDays = this.helpers.nbDaysBetweenDates(aStartDate.getTime(), aEndDate.getTime());
+      for (let i = 0; i < this.eventsTemp.length; i++) {
+        for (let j = i + 1; j < this.eventsTemp.length; j++) {
+          const a = this.eventsTemp[i];
+          const b = this.eventsTemp[j];
+          const isSuperpositioning = this.helpers.isSuperpositioning(new Date(a.startDate), new Date(a.endDate), new Date(b.startDate), new Date(b.endDate));
 
-        const bStartDate = new Date(b.startDate);
-        const bEndDate = new Date(b.endDate);
-        const bNbDays = this.helpers.nbDaysBetweenDates(bStartDate.getTime(), bEndDate.getTime());
-        if (this.helpers.isSuperpositioning(aStartDate, aEndDate, bStartDate, bEndDate)) {
-          if (aStartDate.getTime() < bStartDate.getTime()) {
-            // A commence avant B
-            if (b.displayRow < a.displayRow) {
-              const rowB = b.displayRow;
-              b.displayRow = a.displayRow;
-              a.displayRow = rowB;
-            } else if (a.displayRow === b.displayRow) {
-              b.displayRow += 1;
-            }
-
-          } else {
-            // A commence après B
-            // Donc B est au dessus.
-            if (a.displayRow > b.displayRow) {
-              const rowA = a.displayRow;
-              a.displayRow = b.displayRow;
-              b.displayRow = rowA;
-            } else if (a.displayRow === b.displayRow) {
-              b.displayRow += 1;
+          if (isSuperpositioning) {
+            if (a.nbDays > b.nbDays) {
+              if (a.displayRow > b.displayRow) {
+                const rowA = a.displayRow;
+                const rowB = b.displayRow;
+                a.displayRow = rowB;
+                b.displayRow = rowA;
+              } else if (a.displayRow === b.displayRow) {
+                b.displayRow += 1;
+              }
+            } else if (a.nbDays === b.nbDays) {
+              if (a.displayRow === b.displayRow) {
+                if (!b.displayRow || b.displayRow < 7) {
+                  b.displayRow += 1;
+                }
+              }
             }
           }
         }
-        return bNbDays - aNbDays;
-      });
+      }
     }
-
   }
+
   getRandomColor() {
     let letters = '0123456789ABCDEF';
     let color = '#';
@@ -167,4 +161,5 @@ export class EventsService {
     }
     return color;
   }
+
 }

@@ -154,4 +154,18 @@ export class DateHelpersService {
         }
         return false;
     }
+
+    public nbDaysEvent(startDate: Date, endDate: Date): number {
+      if(!startDate || !endDate) {
+        return;
+      }
+
+
+      const start = new Date(startDate);
+      start.setHours(6,0,0,0);
+      const end = new Date(endDate);
+      end.setHours(7,0,0,0);
+      const difference = (end.getTime() - start.getTime());
+      return Math.round(difference / (1000 * 3600 * 24))+1;
+    }
 }

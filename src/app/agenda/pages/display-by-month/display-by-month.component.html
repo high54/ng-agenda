@@ -36,7 +36,7 @@
                 <span class="event"
                     *ngIf="!eventCal.isStartDate && !eventCal.isEndDate && i % 7!==0 && noMoreTwo(ib)">&nbsp;</span>
             </div>
-            <span class="more-events" *ngIf="day.events.length > maxEventsPerDay" (click)="showAllEvent(day)">
+            <span class="more-events" *ngIf="day.events.length >= maxEventsPerDay" (click)="showAllEvent(day)">
                 {{ day?.events.length - 2}} {{ day?.events.length - 2 > maxEventsPerDay ? "autres" : "autre" }}
             </span>
         </article>

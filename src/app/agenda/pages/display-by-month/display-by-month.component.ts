@@ -100,7 +100,7 @@ export class AgendaCalendarDisplayByMonthComponent {
         return this.helpers.isToday(calendarDay);
     }
     public noMoreTwo(nbEvents: number): boolean {
-        if (nbEvents >= this.maxEventsPerDay) {
+        if (nbEvents >= (this.maxEventsPerDay+4)) {
             return false;
         }
         return true;

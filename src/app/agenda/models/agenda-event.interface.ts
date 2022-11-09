@@ -8,4 +8,5 @@ export interface IAgendaEvent {
     isEndDate?: boolean;
     displayRow?: number;
     color?: string;
+    nbDays?: number // Determine le nombre de jour de l'évent
 }
