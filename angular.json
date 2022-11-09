@@ -126,7 +126,6 @@
       }
     }
   },
-  "defaultProject": "ng-agenda",
   "cli": {
     "analytics": "dcda7b1e-298e-4022-9795-5642f18653a4"
   }

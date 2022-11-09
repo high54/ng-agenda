@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit, Inject } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, Validators, AbstractControl, UntypedFormControl } from '@angular/forms';
 // Models
 import { IAgendaEvent } from '../../models/agenda-event.interface';
 // Angular Material
@@ -22,7 +22,7 @@ export class AgendaEventFormComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<AgendaEventFormComponent>,
         @Inject(MAT_DIALOG_DATA) public agendaEvent: IAgendaEvent,
-        private fb: FormBuilder
+        private fb: UntypedFormBuilder
     ) {
         this.options = [];
         this.options.push('00:00');
@@ -52,8 +52,8 @@ export class AgendaEventFormComponent implements OnInit {
     }
 
     public addTime(): void {
-        this.eventForm.addControl('timeStart', new FormControl('', [Validators.required]));
-        this.eventForm.addControl('timeEnd', new FormControl('', [Validators.required]));
+        this.eventForm.addControl('timeStart', new UntypedFormControl('', [Validators.required]));
+        this.eventForm.addControl('timeEnd', new UntypedFormControl('', [Validators.required]));
         this.isAddTime = true;
     }
     get title(): AbstractControl {

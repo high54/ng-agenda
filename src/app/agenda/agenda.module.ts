@@ -27,11 +27,6 @@ import { AgendaInputTimeDirective } from './directives/input-time.directive';
         ...fromComponents.components,
         AgendaInputTimeDirective
     ],
-    entryComponents: [
-        fromComponents.AgendaEventDetailsComponent,
-        fromComponents.AgendaEventsDetailsComponent,
-        fromComponents.AgendaEventFormComponent
-    ],
     providers: [
         ...fromServices.services,
         { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
